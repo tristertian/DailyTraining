@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "clang++: build current file",
-            "type": "shell",
+            "type": "process",
             "command": "C:\\msys64\\clangarm64\\bin\\clang++.exe",
             "args": [
                 "-std=c++17",
@@ -11,8 +11,6 @@
                 "-O0",
                 "-Wall",
                 "-Wextra",
-                "-B",
-                "C:\\msys64\\clangarm64\\bin",
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
@@ -23,7 +21,10 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
         }
     ]
 }

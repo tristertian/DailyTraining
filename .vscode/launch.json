@@ -2,24 +2,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug current C++ file",
-            "type": "cppdbg",
+            "name": "Debug current C++ file (LLDB-DAP)",
+            "type": "lldb-dap",
             "request": "launch",
             "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
             "args": [],
-            "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "lldb",
-            "miDebuggerPath": "C:\\msys64\\clangarm64\\bin\\lldb.exe",
-            "setupCommands": [
-                {
-                    "description": "Enable LLDB inline breakpoints",
-                    "text": "settings set target.inline-breakpoint-strategy always",
-                    "ignoreFailures": true
-                }
-            ],
+            "stopOnEntry": false,
             "preLaunchTask": "clang++: build current file"
         }
     ]
