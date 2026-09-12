@@ -2,15 +2,28 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug current C++ file (LLDB-DAP)",
+            "name": "Debug Active File with File IO",
             "type": "lldb-dap",
             "request": "launch",
-            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
             "args": [],
             "cwd": "${fileDirname}",
-            "console": "integratedTerminal",
+            "stdio": ["in.txt", "out.txt", "out.txt"],
             "stopOnEntry": false,
-            "preLaunchTask": "clang++: build current file"
+            "preLaunchTask": "Compile Active File (clang++)",
+            "debugAdapterExecutable": "C:/msys64/clangarm64/bin/lldb-dap.exe"
+        },
+        {
+            "name": "Debug Active File",
+            "type": "lldb-dap",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
+            "args": [],
+            "cwd": "${fileDirname}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "preLaunchTask": "Compile Active File (clang++)",
+            "debugAdapterExecutable": "C:/msys64/clangarm64/bin/lldb-dap.exe"
         }
     ]
 }

@@ -2,29 +2,44 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "clang++: build current file",
+            "label": "Compile Active File (clang++)",
             "type": "process",
-            "command": "C:\\msys64\\clangarm64\\bin\\clang++.exe",
+            "command": "C:/msys64/clangarm64/bin/clang++.exe",
             "args": [
-                "-std=c++17",
                 "-g",
                 "-O0",
+                "-std=c++17",
                 "-Wall",
-                "-Wextra",
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}/${fileBasenameNoExtension}.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"
             },
+            "problemMatcher": ["$gcc"],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "problemMatcher": [
-                "$gcc"
-            ]
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "close": true
+            },
+            "detail": "Compile the currently active .cpp file into a matching .exe for LLDB debugging."
+        },
+        {
+            "label": "Clean Active File Artifacts",
+            "type": "process",
+            "command": "C:/msys64/usr/bin/rm.exe",
+            "args": [
+                "-f",
+                "${fileDirname}/${fileBasenameNoExtension}.exe",
+                "${fileDirname}/out.txt"
+            ],
+            "problemMatcher": [],
+            "detail": "Remove the compiled .exe and out.txt for the active file."
         }
     ]
 }

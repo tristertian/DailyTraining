@@ -9,20 +9,20 @@ struct node{
     }
 };
 
-node s[100000];
+node s[100005];
 // 有N个同学进行排序，有M个同学会被去除；tot为已经使用的节点编号数
 int n, m, tot = 0;
 // 用index数组记录每一个节点的编号，index[0]表示0号同学（不存在）
-int index[100000] = {0};
+int index[100005] = {0};
 
 // 何意味：把数据y插入数据x后面
 void insertBack(int x, int y){
     index[y] = ++tot;
     s[index[y]] = node(y, index[x], s[index[x]].nxt);
-    s[index[x]].nxt = index[y];
     s[s[index[x]].nxt].pre = index[y];
+    s[index[x]].nxt = index[y];
 }
-// 何意味：把数据y插入数据x后面
+// 何意味：把数据y插入数据x前面
 void insertFront(int x, int y){
     index[y] = ++tot;
     s[index[y]] = node(y, s[index[x]].pre, index[x]);
@@ -55,7 +55,7 @@ int main(){
     }
 
     int now = s[0].nxt;
-    for (int i=0; i<tot; i++) {
+    while (now != 0) {
         std::cout << s[now].key << ' ';
         now = s[now].nxt;
     }
