@@ -8,6 +8,7 @@
             "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
             "args": [],
             "cwd": "${fileDirname}",
+            "console": "integratedTerminal",
             "stopOnEntry": false,
             "preLaunchTask": "clang++: build current file"
         }
